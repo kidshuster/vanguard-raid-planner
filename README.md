@@ -8,7 +8,7 @@ No build step, npm installation, ChatGPT account, or Sites hosting is required.
 
 Live on GitHub Pages:
 
-https://kidshuster.github.io/vanguard-raid-planner/
+https://nayberhq.github.io/vanguard-raid-planner/
 
 Pushes to `main` run CI (file/syntax/icon checks), then deploy the `public/` folder.
 Pull requests run the same checks without deploying.
