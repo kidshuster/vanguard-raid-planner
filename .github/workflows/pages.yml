@@ -28,6 +28,12 @@ jobs:
           set -euo pipefail
           test -f public/index.html
           test -f public/constraints.js
+          test -f public/fellowship.js
+          test -f public/app.js
+          test -f public/role-priorities.js
+          test -f public/search.js
+          test -f public/background.js
+          test -f public/planner-worker.js
           test -f server.py
           test -x start.sh
           test -d public/icons
@@ -38,6 +44,14 @@ jobs:
           python3 -m py_compile server.py
           bash -n start.sh
           node --check public/constraints.js
+          node --check public/fellowship.js
+          node --check public/app.js
+          node --check public/role-priorities.js
+          node --check public/search.js
+          node --check public/background.js
+          node --check public/planner-worker.js
+          node tests/planner.test.cjs
+          node tests/background.test.cjs
 
       - name: Class icons present
         run: |

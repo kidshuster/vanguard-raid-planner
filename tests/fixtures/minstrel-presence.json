@@ -1,0 +1,208 @@
+{
+  "setup": {
+    "version": 2,
+    "enabled": true,
+    "rules": [
+      {
+        "role": "Buffer",
+        "className": "Any",
+        "specs": [],
+        "target": "raid",
+        "minimum": 1,
+        "preferred": 1,
+        "strength": "hard",
+        "source": "any",
+        "effectTarget": "same"
+      },
+      {
+        "role": "Debuffer",
+        "className": "Any",
+        "specs": [],
+        "target": "raid",
+        "minimum": 1,
+        "preferred": 2,
+        "strength": "hard",
+        "source": "any",
+        "effectTarget": "same",
+        "advancedCounts": true
+      },
+      {
+        "role": "Healer",
+        "className": "Any",
+        "specs": [],
+        "target": "each",
+        "minimum": 1,
+        "preferred": 1,
+        "strength": "hard",
+        "source": "each",
+        "effectTarget": "same"
+      },
+      {
+        "role": "Tank",
+        "className": "Any",
+        "specs": [],
+        "target": "raid",
+        "minimum": 1,
+        "preferred": 2,
+        "strength": "hard",
+        "source": "any",
+        "effectTarget": "same",
+        "advancedCounts": true,
+        "placementMode": "together"
+      },
+      {
+        "role": "Any",
+        "className": "Beorning",
+        "specs": [],
+        "target": "raid",
+        "minimum": 0,
+        "preferred": 1,
+        "strength": "soft",
+        "source": "any",
+        "effectTarget": "same"
+      },
+      {
+        "role": "Any",
+        "className": "Minstrel",
+        "specs": [],
+        "target": "dps",
+        "minimum": 0,
+        "preferred": 1,
+        "strength": "soft",
+        "source": "dps",
+        "effectTarget": "same"
+      },
+      {
+        "role": "Any",
+        "className": "Captain",
+        "specs": [
+          "Red"
+        ],
+        "target": "tank",
+        "minimum": 0,
+        "preferred": 0,
+        "strength": "override",
+        "source": "tank",
+        "effectTarget": "same",
+        "placementMode": "none"
+      },
+      {
+        "role": "Any",
+        "className": "Beorning",
+        "specs": [
+          "Yellow"
+        ],
+        "target": "tank",
+        "minimum": 0,
+        "preferred": 0,
+        "strength": "override",
+        "source": "tank",
+        "effectTarget": "any",
+        "placementMode": "none"
+      }
+    ],
+    "exceptions": [],
+    "placements": [],
+    "roleDefaults": {
+      "Tank": "own",
+      "Healer": "own",
+      "Debuffer": "own",
+      "Buffer": "own",
+      "DPS": "own"
+    },
+    "unified": true,
+    "slotAssignments": true,
+    "countRequirements": false,
+    "capabilitiesSeparated": true
+  },
+  "groups": [
+    [
+      {
+        "id": "p0-0",
+        "name": "Player 0-0",
+        "c": "Captain",
+        "spec": "Red",
+        "role": "Buffer"
+      },
+      {
+        "id": "p0-1",
+        "name": "Player 0-1",
+        "c": "Hunter",
+        "spec": "Blue",
+        "role": "DPS"
+      },
+      {
+        "id": "p0-2",
+        "name": "Player 0-2",
+        "c": "Minstrel",
+        "spec": "Red",
+        "role": "DPS"
+      },
+      {
+        "id": "p0-3",
+        "name": "Player 0-3",
+        "c": "Champion",
+        "spec": "Red",
+        "role": "DPS"
+      },
+      {
+        "id": "p0-4",
+        "name": "Player 0-4",
+        "c": "Hunter",
+        "spec": "Red",
+        "role": "DPS"
+      },
+      {
+        "id": "p0-5",
+        "name": "Player 0-5",
+        "c": "Rune-keeper",
+        "spec": "Red",
+        "role": "DPS"
+      }
+    ],
+    [
+      {
+        "id": "p1-0",
+        "name": "Player 1-0",
+        "c": "Warden",
+        "spec": "Blue",
+        "role": "Tank"
+      },
+      {
+        "id": "p1-1",
+        "name": "Player 1-1",
+        "c": "Lore-master",
+        "spec": "Yellow",
+        "role": "Debuffer"
+      },
+      {
+        "id": "p1-2",
+        "name": "Player 1-2",
+        "c": "Guardian",
+        "spec": "Blue",
+        "role": "Tank"
+      },
+      {
+        "id": "p1-3",
+        "name": "Player 1-3",
+        "c": "Beorning",
+        "spec": "Yellow",
+        "role": "Healer"
+      },
+      {
+        "id": "p1-4",
+        "name": "Player 1-4",
+        "c": "Burglar",
+        "spec": "Yellow",
+        "role": "Debuffer"
+      },
+      {
+        "id": "p1-5",
+        "name": "Player 1-5",
+        "c": "Minstrel",
+        "spec": "Blue",
+        "role": "Healer"
+      }
+    ]
+  ]
+}
