@@ -1,0 +1,84 @@
+name: CI and GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Required project files
+        run: |
+          set -euo pipefail
+          test -f public/index.html
+          test -f public/constraints.js
+          test -f server.py
+          test -x start.sh
+          test -d public/icons
+
+      - name: Syntax checks
+        run: |
+          set -euo pipefail
+          python3 -m py_compile server.py
+          bash -n start.sh
+          node --check public/constraints.js
+
+      - name: Class icons present
+        run: |
+          set -euo pipefail
+          classes=(
+            beorning brawler burglar captain champion guardian
+            hunter lore-master mariner minstrel rune-keeper warden
+          )
+          missing=0
+          for class in "${classes[@]}"; do
+            if [[ ! -f "public/icons/${class}.png" ]]; then
+              echo "Missing icon: public/icons/${class}.png"
+              missing=1
+            fi
+          done
+          exit "$missing"
+
+      - name: Constraints script is referenced
+        run: |
+          set -euo pipefail
+          grep -q 'src="constraints.js"' public/index.html
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

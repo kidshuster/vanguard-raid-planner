@@ -4,6 +4,15 @@ Includes the current planner, constraint builder, icons, roster editing, team ge
 parallel-team balancing, Discord message exports, and session JSON import/export.
 No build step, npm installation, ChatGPT account, or Sites hosting is required.
 
+## Hosted site
+
+Live on GitHub Pages:
+
+https://kidshuster.github.io/vanguard-raid-planner/
+
+Pushes to `main` run CI (file/syntax/icon checks), then deploy the `public/` folder.
+Pull requests run the same checks without deploying.
+
 ## Launch
 
 Requirements: Python 3.7+ and unzip.
